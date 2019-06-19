@@ -1,14 +1,11 @@
 
 var mongoose = require('mongoose');
 
-var policySchema = new mongoose.Schema({
+var blockSchema = new mongoose.Schema({
     perviousHash: String,
-    deligator:String,
-    deligatee:String,
-    policy:String,
+    data:String,
     hash:String,
     timestamp:String,
-    validDate:String
 });
 
-module.exports = mongoose.model('policy',policySchema);
+module.exports = mongoose.model('block',blockSchema);
