@@ -1,10 +1,10 @@
-var policy = require('./policyChain');
+var block = require('./block');
 var sha256 = require('js-sha256');
 
 module.exports = function(app){
     //get list
-    app.get('/policylist',(req,res)=>{
-        policy.find({},function(err,dbres){
+    app.get('/blocklist',(req,res)=>{
+        block.find({},function(err,dbres){
             if(err)console.log(err);
             else{
                 console.log(dbres);
@@ -15,9 +15,9 @@ module.exports = function(app){
         ///res.json({msg:"fhjaskhf"});
     });
 
-    app.post('/addpolicy',(req,res)=>{
+    app.post('/addblock',(req,res)=>{
         console.log('sdfhjaksf');
-        policy.find({},function(err,dbres){
+        block.find({},function(err,dbres){
             if(err)console.log(err);
             else{
                 var previousHashTemp;
@@ -29,7 +29,7 @@ module.exports = function(app){
                    var hashTemp=sha256(previousHashTemp+req.body.deligator+req.body.deligatee+req.body.policy+req.body.validDate+timeStampTemp);
                    console.log(hashTemp);
                 //create new chain
-                policy.create(new policy({
+                block.create(new block({
                     perviousHash: previousHashTemp,
                     deligator:req.body.deligator,
                     deligatee:req.body.deligatee,
@@ -45,19 +45,5 @@ module.exports = function(app){
                      
             }
         });
-        // //create new chain
-        // policy.create(new policy({
-        //     perviousHash: "String",
-        //     deligator:req.body.deligator,
-        //     deligatee:req.body.deligatee,
-        //     policy:req.body.policy,
-        //     hash:'hasssh',
-        //     timestamp:"sometime"   
-        // }),function(err,dbres){
-        //     console.log(err);
-        //     console.log(dbres);
-        //     res.json({msg:'abc'});
-        // });
-        
     });
 }
