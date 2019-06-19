@@ -1,5 +1,4 @@
 var express=require('express'),
-    passport=require('passport'),
     mongoose=require('mongoose'),
     bodyParser=require('body-parser');
 var app=express();
