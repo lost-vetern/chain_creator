@@ -1,0 +1,27 @@
+{
+  "name": "Chain Creation",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lost-vetern/gohar_publication1.git"
+  },
+  "author": "shahzad",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/lost-vetern/gohar_publication1/issues"
+  },
+  "homepage": "https://github.com/lost-vetern/gohar_publication1#readme",
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "express": "^4.17.1",
+    "express-session": "^1.16.1",
+    "js-sha256": "^0.9.0",
+    "mongoose": "^5.5.14",
+    "nodemon": "^1.19.1",
+  }
+}
