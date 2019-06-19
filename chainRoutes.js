@@ -8,15 +8,12 @@ module.exports = function(app){
             if(err)console.log(err);
             else{
                 console.log(dbres);
-                res.json({'msg':dbres});
-               
+                res.json({'blocks':dbres});    
             }
         });
-        ///res.json({msg:"fhjaskhf"});
     });
 
     app.post('/addblock',(req,res)=>{
-        console.log('sdfhjaksf');
         block.find({},function(err,dbres){
             if(err)console.log(err);
             else{
@@ -26,16 +23,13 @@ module.exports = function(app){
                    previousHashTemp=dbres[dbres.length-1].hash;
                    console.log(previousHashTemp);}
                    var timeStampTemp=new Date().toGMTString();
-                   var hashTemp=sha256(previousHashTemp+req.body.deligator+req.body.deligatee+req.body.policy+req.body.validDate+timeStampTemp);
+                   var hashTemp=sha256(previousHashTemp+req.body.data+timeStampTemp);
                    console.log(hashTemp);
                 //create new chain
                 block.create(new block({
                     perviousHash: previousHashTemp,
-                    deligator:req.body.deligator,
-                    deligatee:req.body.deligatee,
-                    policy:req.body.policy,
+                    data:req.body.data,
                     hash:hashTemp,
-                    validDate:req.body.validDate,
                     timestamp:timeStampTemp   
                 }),function(err,dbres){
                     console.log(err);
